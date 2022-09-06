@@ -1,0 +1,29 @@
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{secrets.SHARED_HOSTNAME}}
+          username: ${{secrets.SHARED_USERNAME}}
+          password: ${{secrets.SHARED_PASSWORD}}
+          protocol: ftps
+          port: 21 # todo replace with your web hosts ftps port
+          local-dir: "../../"
+          server-dir: "/home/dilaxzzk/delishicodes.com/prod/"
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.json
+            **/md
+            **/node_modules/**
+            **/github/**
+            LICENSE

@@ -14,10 +14,7 @@ jobs:
           server: ${{secrets.SHARED_HOSTNAME}}
           username: ${{secrets.SHARED_USERNAME}}
           password: ${{secrets.SHARED_PASSWORD}}
-          protocol: ftps
-          port: 21 # todo replace with your web hosts ftps port
-          local-dir: "../../"
-          server-dir: "/home/dilaxzzk/delishicodes.com/prod/"
+          server-dir: "delishicodes.com/prod/"
           log-level: standard
           exclude: |
             **/.git*

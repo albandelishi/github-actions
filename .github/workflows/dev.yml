@@ -16,7 +16,7 @@ jobs:
           server: ${{secrets.SHARED_HOSTNAME}}
           username: ${{secrets.SHARED_USERNAME}}
           password: ${{secrets.SHARED_PASSWORD}}
-          server-dir: "delishicodes.com/prod/"
+          server-dir: "delishicodes.com/dev/"
           log-level: standard
           exclude: |
             **/.git*

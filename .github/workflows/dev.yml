@@ -1,0 +1,28 @@
+on:
+  push:
+    branches: dev
+name: 🚀 Deploy website on dev branch
+jobs:
+  web-deploy:
+    name: 🎉 Deploy on dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{secrets.SHARED_HOSTNAME}}
+          username: ${{secrets.SHARED_USERNAME}}
+          password: ${{secrets.SHARED_PASSWORD}}
+          server-dir: "delishicodes.com/dev/"
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.json
+            **/md
+            **/node_modules/**
+            **/github/**
+            LICENSE
